@@ -1,3 +1,4 @@
+beautifulsoup4==4.11.1
 cachetools==5.2.0
 certifi==2022.6.15
 charset-normalizer==2.1.0
@@ -14,9 +15,12 @@ Jinja2==3.1.2
 lxml==4.9.1
 MarkupSafe==2.1.1
 premailer==3.10.0
+psycopg2==2.9.3
 python-dotenv==0.20.0
 requests==2.28.1
+soupsieve==2.3.2.post1
 urllib3==1.26.11
+uuid7==0.1.0
 Werkzeug==2.2.2
 yagmail==0.15.283
 zipp==3.8.1
