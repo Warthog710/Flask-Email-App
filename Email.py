@@ -3,7 +3,6 @@ import yagmail
 
 from uuid_extensions import uuid7str
 from bs4 import BeautifulSoup
-from dotenv import load_dotenv
 from subprocess import run
 
 class email:
@@ -11,7 +10,6 @@ class email:
     in_file = 'in.html'
     
     def __init__(self, db):
-        load_dotenv()
         self.__db = db
         self.__password = os.getenv('GMAIL_APP_PASSWORD')
         self.__email_from = os.getenv('EMAIL_FROM')
@@ -68,7 +66,7 @@ class email:
 
                 self.__db.save_image(image_id, image_type, data)
 
-                if image['data-filename']:
+                if 'date-filename' in image:
                     del image['data-filename']
 
                 # Replace with URL to image

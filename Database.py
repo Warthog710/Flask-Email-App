@@ -1,11 +1,8 @@
 import os
 import psycopg2
 
-from dotenv import load_dotenv
-
 class database:
     def __init__(self):
-        load_dotenv()        
         self.__user = os.getenv('POSTGRESQL_USER')
         self.__password = os.getenv('POSTGRESQL_PASSWORD')
         self.__host = os.getenv('POSTGRESQL_HOST')
@@ -76,5 +73,21 @@ class database:
     def get_image(self, id): 
         query = f'SELECT image_type, image_data FROM "{self.__schema}".images WHERE image_id=%s'
         values = (id,)
+        return self.__exec1(query, values)
+
+    def create_user(self, user_id, first, last, username, password, is_active, is_super, is_admin):
+        query = f'INSERT INTO "{self.__schema}".users (user_id, first_name, last_name, email, password, \
+        is_active, is_superuser, is_admin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);'
+        values = (user_id, first, last, username, password, is_active, is_super, is_admin,)
+        return self.__exec0(query, values)
+
+    def get_users_from_email(self, email):
+        query = f'SELECT * FROM "{self.__schema}".users WHERE email=%s;'
+        values = (email,)
+        return self.__exec(query, values)
+
+    def get_user_from_id(self, user_id):
+        query = f'SELECT * FROM "{self.__schema}".users WHERE user_id=%s;'
+        values = (user_id,)
         return self.__exec1(query, values)
         
