@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="#">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" width="30" height="30"
+            class="d-inline-block align-top" alt="">
+        Cow Creek
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            {% if user.admin %}
+                <a class="nav-item nav-link" href="#">Manage Users</a>
+            {% endif %}
+            <a class="nav-item nav-link" href="{{ url_for('logout') }}">Sign Out</a>
+        </div>
+    </div>
+</nav>

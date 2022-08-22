@@ -1,0 +1,38 @@
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-image: url("/static/images/background.jpg");
+}
+
+.center-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media only screen and (min-width: 475px) {
+    .center-login { width: 450px; }
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.errors {
+    color: rgb(199, 52, 52);
+    font-size: small;
+}
+
+.index-button
+{
+    width: 90%;
+    font-size: 25px;
+}
+
+

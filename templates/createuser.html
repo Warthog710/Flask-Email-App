@@ -2,18 +2,61 @@
 
 {% block body %}
 
-{% from "formmacro.html" import render_field %}
-<form method=post>
-    <dl>
-        {{ render_field(form.first_name) }}
-        {{ render_field(form.last_name) }}
-        {{ render_field(form.email) }}
-        {{ render_field(form.password) }}
-        {{ render_field(form.confirm) }}
-        {{ render_field(form.is_admin) }}
-        {{ render_field(form.is_super) }}
-    </dl>
-    <p><input type=submit value=Login>
-</form>
+<div class="container center-login">
+    <div class="card rounded shadow">
+        <form method=post>
+            <div class="form-outline mb-4">
+                {{ form.first_name(class="form-control", placeholder="First Name") }}
+                {% if form.first_name.errors %}
+                    <ul class="errors">{% for error in form.first_name.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        
+            <div class="form-outline mb-4">
+                {{ form.last_name(class="form-control", placeholder="Last Name") }}
+                {% if form.last_name.errors %}
+                    <ul class="errors">{% for error in form.last_name.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        
+            <div class="form-outline mb-4">
+                {{ form.email(class="form-control", placeholder="Email") }}
+                {% if form.email.errors %}
+                    <ul class="errors">{% for error in form.email.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        
+            <div class="form-outline mb-4">
+                {{ form.password(class="form-control", placeholder="Password") }}
+                {% if form.password.errors %}
+                    <ul class="errors">{% for error in form.password.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        
+            <div class="form-outline mb-4">
+                {{ form.confirm(class="form-control", placeholder="Confirm Password") }}
+                {% if form.confirm.errors %}
+                    <ul class="errors">{% for error in form.confirm.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        
+            <div class="form-outline mb-4">
+                {{ form.is_admin(class="form-control", placeholder="Is Admin") }}
+                {% if form.is_admin.errors %}
+                    <ul class="errors">{% for error in form.is_admin.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        
+            <div class="form-outline mb-4">
+                {{ form.is_super(class="form-control", placeholder="Confirm Password") }}
+                {% if form.is_super.errors %}
+                    <ul class="errors">{% for error in form.is_super.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        
+            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

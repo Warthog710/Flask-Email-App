@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% include 'navbar.html' %}
+{% endblock%}
+
+{% block body %}
+<div class="container center">
+    <div class="row text-center">
+        <div class="col-lg-6">
+            <a href="#">
+                <button class="index-button m-2 p-4">Manage Groups</button>
+            </a>
+        </div>
+
+        <div class="col-lg-6 w-100">
+            <a href="{{ url_for('compose_email') }}">
+                <button class="index-button m-2 p-4">Compose Email</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -67,9 +67,18 @@ def create_user():
 
     return flask.render_template('createuser.html', form=form)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/forgot_password')
+def forgot_password():
+    return flask.render_template('forgotpassword.html')
+
+@app.route('/')
 @flask_login.login_required
 def index():
+    return flask.render_template('index.html', user=flask_login.current_user)
+
+@app.route('/compose_email', methods=['POST', 'GET'])
+@flask_login.login_required
+def compose_email():
     if flask.request.method == 'POST':
         html = flask.request.get_data().decode('utf-8')
         email(db).send_email(html, flask.request)
